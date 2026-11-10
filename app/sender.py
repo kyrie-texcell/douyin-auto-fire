@@ -154,7 +154,7 @@ async def send_text(chat: DouyinChat, content: str) -> None:
         raise PageOperationError("文字未能写入聊天输入框") from exc
 
     before = await _mark_latest_outgoing_message(page)
-    await page.wait_for_timeout(300)
+    await page.wait_for_timeout(5000)
     await _trigger_send(page)
     await _confirm_outgoing_message(page, before, label="文字", expected_text=content)
 
